@@ -27,11 +27,10 @@ class App {
 
     try {
         const filenames = glob.sync(`${__dirname}/**/*${App.ROUTES_FILE_NAME_POSTFIX}`);
-
-        filenames.forEach(fname => {
-          console.log(fname);
+        
+        filenames.forEach((fname: string) => {
           const module = require(fname).default;
-          routes.push(...module);
+          routes.push(module);
         });
 
         return routes;
